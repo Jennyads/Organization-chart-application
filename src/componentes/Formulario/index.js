@@ -4,7 +4,7 @@ import CampoTexto from "../CampoTexto"
 import ListaSuspensa from "../ListaSuspensa"
 import './Formulario.css'
 
-const Formulario = () => {
+const Formulario = (props) => {
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
@@ -20,12 +20,16 @@ const Formulario = () => {
         'Mobile',
         'Inovação e Gestão'
 
-
     ]
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        console.log('Form foi submetido', nome, cargo, imagem)
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
     return (
         <section className="formulario">
