@@ -1,8 +1,7 @@
-
 import { useState } from 'react';
-import Banner from './componentes/Banner/Banner';
-import Formulario from './componentes/Formulario';
+import Banner from './componentes/Banner';
 import Rodape from './componentes/Rodape';
+import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
     {
       nome: 'Data Science',
       corPrimaria: '#A6D157',
-      corSecundaria: '#FOF8E2'
+      corSecundaria: '#F0F8E2'
     },
     {
       nome: 'Devops',
@@ -31,7 +30,7 @@ function App() {
     {
       nome: 'UX e Design',
       corPrimaria: '#DB6EBF',
-      corSecundaria: '#FAE9E5'
+      corSecundaria: '#FAE9F5'
     },
     {
       nome: 'Mobile',
@@ -43,32 +42,29 @@ function App() {
       corPrimaria: '#FF8A29',
       corSecundaria: '#FFEEDF'
     }
-    
   ]
 
   const [colaboradores, setColaboradores] = useState([])
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    console.log(colaborador)
+    debugger
     setColaboradores([...colaboradores, colaborador])
   }
+
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)}aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
-      <Rodape />
-
+      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
 
       {times.map(time => <Time 
-      key={time.nome} 
-      nome={time.nome} 
-      corPrimaria={time.corPrimaria} 
-      corSecundaria={time.corSecundaria}
-      colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}/>
-     
-      )
-      
-      }
-     
+        key={time.nome} 
+        nome={time.nome} 
+        corPrimaria={time.corPrimaria} 
+        corSecundaria={time.corSecundaria} 
+        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+      />)}   
+
+      <Rodape />
 
     </div>
   );
